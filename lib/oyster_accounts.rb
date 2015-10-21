@@ -3,8 +3,13 @@ class OysterAccounts
     @accounts = {}
   end
 
+  def open_account(uuid)
+    accounts[uuid] = 0
+  end
+
   def credit(uuid, amount)
-    accounts[uuid] ||= 0
+    raise AccountInvalid unless accounts[uuid]
+
     accounts[uuid] += amount
   end
 
@@ -15,4 +20,7 @@ class OysterAccounts
   private
 
   attr_reader :accounts
+
 end
+
+class AccountInvalid < StandardError; end

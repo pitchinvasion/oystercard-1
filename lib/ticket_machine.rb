@@ -1,6 +1,13 @@
 class TicketMachine
-  def initialize(oyster_accounts)
+  def initialize(oyster_accounts, oyster_card)
     @oyster_accounts = oyster_accounts
+    @oyster_card = oyster_card
+  end
+
+  def buy_card(name)
+    oyster_card.new(name).tap do |card|
+      oyster_accounts.open_account(card.uuid)
+    end
   end
 
   def top_up(card, amount)
@@ -13,5 +20,5 @@ class TicketMachine
 
   private
 
-  attr_reader :oyster_accounts
+  attr_reader :oyster_accounts, :oyster_card
 end
