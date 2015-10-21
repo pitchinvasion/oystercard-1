@@ -8,7 +8,7 @@ class TicketMachine
   end
 
   def balance(card)
-    oyster_accounts.balance
+    oyster_accounts.balance(card.uuid)
   end
 
   private
