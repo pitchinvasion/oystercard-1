@@ -1,4 +1,6 @@
 class Station
+  attr_reader :zone
+
   def initialize(zone, name, journey_log)
     @journey_log = journey_log
   end

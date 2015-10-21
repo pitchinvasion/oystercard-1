@@ -13,6 +13,12 @@ class OysterAccounts
     accounts[uuid] += amount
   end
 
+  def debit(uuid, amount)
+    raise AccountInvalid unless accounts[uuid]
+
+    accounts[uuid] -= amount
+  end
+
   def balance(uuid)
     accounts[uuid]
   end
